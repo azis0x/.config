@@ -1,0 +1,195 @@
+{
+    "Function": {
+        "prefix": "fn",
+        "body": [
+            "function ${1:name}(${2}): ${3:void} {",
+            "\t$0",
+            "}"
+        ],
+        "description": "Function declaration"
+    },
+    "Arrow Function": {
+        "prefix": "afn",
+        "body": [
+            "const ${1:name} = (${2}): ${3:void} => {",
+            "\t$0",
+            "};"
+        ],
+        "description": "Arrow function"
+    },
+    "Async Arrow Function": {
+        "prefix": "aafn",
+        "body": [
+            "const ${1:name} = async (${2}): ${3:Promise<void>} => {",
+            "\t$0",
+            "};"
+        ],
+        "description": "Async arrow function"
+    },
+    "Console Log": {
+        "prefix": "clg",
+        "body": "console.log($0);",
+        "description": "Console log"
+    },
+    "Console Error": {
+        "prefix": "cle",
+        "body": "console.error($0);",
+        "description": "Console error"
+    },
+    "Import": {
+        "prefix": "imp",
+        "body": "import ${1:{ something }} from '${2:module}';",
+        "description": "Import statement"
+    },
+    "Export Default": {
+        "prefix": "exp",
+        "body": "export default $0;",
+        "description": "Export default"
+    },
+    "Export Interface": {
+        "prefix": "exi",
+        "body": [
+            "export interface ${1:Name} {",
+            "\t$0",
+            "}"
+        ],
+        "description": "Export interface"
+    },
+    "Export Function": {
+        "prefix": "exf",
+        "body": [
+            "export function ${1:name}(${2}): ${3:void} {",
+            "\t$0",
+            "}"
+        ],
+        "description": "Export function"
+    },
+    "Type Alias": {
+        "prefix": "type",
+        "body": "type ${1:Name} = { $0 };",
+        "description": "Type alias"
+    },
+    "Interface": {
+        "prefix": "iface",
+        "body": [
+            "interface ${1:Name} {",
+            "\t$0",
+            "}"
+        ],
+        "description": "Interface"
+    },
+    "Try Catch": {
+        "prefix": "try",
+        "body": [
+            "try {",
+            "\t${1}",
+            "} catch (err) {",
+            "\tconsole.error(err);",
+            "}"
+        ],
+        "description": "Try catch block"
+    },
+    "Generic Function": {
+        "prefix": "gen",
+        "body": [
+            "function ${1:identity}<T>(${2:arg: T}): T {",
+            "\treturn ${2:arg};",
+            "}"
+        ],
+        "description": "Generic function"
+    },
+    "Enum": {
+        "prefix": "enum",
+        "body": [
+            "enum ${1:Name} {",
+            "\t$0",
+            "}"
+        ],
+        "description": "Enum"
+    },
+    "Class": {
+        "prefix": "class",
+        "body": [
+            "class ${1:Name} {",
+            "\tconstructor(${2}) {",
+            "\t\t${3}",
+            "\t}",
+            "",
+            "\t$0",
+            "}"
+        ],
+        "description": "Class"
+    },
+    "Describe unit test": {
+        "prefix": "descr",
+        "body": [
+            "describe('${1:function}', () => {",
+            "\t$0",
+            "});"
+        ],
+        "description": "Describe unit test"
+    },
+    "Before unit test": {
+        "prefix": "bf",
+        "body": [
+            "before(() => {",
+            "\t$0",
+            "});"
+        ],
+        "description": "Before unit test"
+    },
+    "BeforeAll unit test": {
+        "prefix": "bfa",
+        "body": [
+            "beforeAll(() => {",
+            "\t$0",
+            "});"
+        ],
+        "description": "BeforeAll unit test"
+    },
+    "After unit test": {
+        "prefix": "af",
+        "body": [
+            "after(() => {",
+            "\tsandbox.restore();",
+            "});"
+        ],
+        "description": "After unit test"
+    },
+    "AfterAll unit test": {
+        "prefix": "afa",
+        "body": [
+            "afterAll(() => {",
+            "\tsandbox.restore();",
+            "});"
+        ],
+        "description": "AfterAll unit test"
+    },
+    "AfterEach unit test": {
+        "prefix": "afe",
+        "body": [
+            "afterEach(() => {",
+            "\tsandbox.reset();",
+            "});"
+        ],
+        "description": "AfterEach unit test"
+    },
+    "It unit test": {
+        "prefix": "itt",
+        "body": [
+            "it('should return ${1}', () => {",
+            "\t$0",
+            "});"
+        ],
+        "description": "It unit test"
+    },
+    "ItParams mocha test": {
+        "prefix": "itp",
+        "body": [
+            "itParam('should return when ${value.case}', data, (value) => {",
+            "\t$0",
+            "});"
+        ],
+        "description": "ItParam mocha test"
+    }
+}

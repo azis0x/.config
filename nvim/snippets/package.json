@@ -1,0 +1,28 @@
+{
+    "name": "custom-snippets",
+    "version": "1.0.0",
+    "contributes": {
+        "snippets": [
+            {
+                "language": ["html", "ejs"],
+                "path": "./html.json"
+            },
+            {
+                "language": ["css", "scss", "less"],
+                "path": "./css.json"
+            },
+            {
+                "language": ["typescript", "javascript"],
+                "path": "./typescript.json"
+            },
+            {
+                "language": ["typescriptreact", "javascriptreact"],
+                "path": "./typescriptreact.json"
+            },
+            {
+                "language": ["json", "jsonc"],
+                "path": "./json.json"
+            }
+        ]
+    }
+}

@@ -1,0 +1,2 @@
+--- @see entry-point
+--- ~/.config/nvim/init.lua
