@@ -10,9 +10,10 @@ export KEYTIMEOUT=1
 
 autoload -Uz vcs_info
 precmd() { vcs_info }
-zstyle ':vcs_info:git:*' formats ' %F{#00ffff}%f %F{#a6dbff}%b%f'
+zstyle ':vcs_info:git:*' formats ' %F{yellow}(%b)%f'
+
 setopt PROMPT_SUBST
-PS1='%F{#eef1f8}%~%f%b${vcs_info_msg_0_} %B%F{#ffcaff}$%f%b '
+PS1='%B%F{green}%n@btw%f%b:%F{blue}%~%f${vcs_info_msg_0_} %F{white}$%f '
 
 autoload -U compinit && compinit
 zstyle ':completion:*' menu select

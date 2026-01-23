@@ -65,6 +65,7 @@ vim.opt.mouse = "a"
 vim.opt.clipboard:append("unnamedplus")
 vim.opt.modifiable = true
 vim.opt.encoding = "UTF-8"
+vim.opt.guicursor = ""
 
 for _, plugin in ipairs({
 	"gzip",
@@ -129,36 +130,6 @@ vim.api.nvim_create_autocmd({ "WinLeave", "BufLeave" }, {
 	end,
 })
 
--- vim.api.nvim_create_autocmd("CursorMoved", {
--- 	group = vim.api.nvim_create_augroup("LspReferenceHighlight", { clear = true }),
--- 	desc = "Highlight references under cursor",
--- 	callback = function()
--- 		if vim.fn.mode() ~= "i" then
--- 			local clients = vim.lsp.get_clients({ bufnr = 0 })
--- 			local supports_highlight = false
--- 			for _, client in ipairs(clients) do
--- 				if client.server_capabilities.documentHighlightProvider then
--- 					supports_highlight = true
--- 					break
--- 				end
--- 			end
---
--- 			if supports_highlight then
--- 				vim.lsp.buf.clear_references()
--- 				vim.lsp.buf.document_highlight()
--- 			end
--- 		end
--- 	end,
--- })
---
--- vim.api.nvim_create_autocmd("CursorMovedI", {
--- 	group = "LspReferenceHighlight",
--- 	desc = "Clear highlights when entering insert mode",
--- 	callback = function()
--- 		vim.lsp.buf.clear_references()
--- 	end,
--- })
-
 vim.api.nvim_create_autocmd("BufWritePost", {
 	pattern = "*/spell/*.add",
 	group = vim.api.nvim_create_augroup("SpellFile", { clear = true }),
@@ -168,7 +139,6 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 })
 
 vim.pack.add({
-	{ src = "https://github.com/vague-theme/vague.nvim" },
 	{ src = "https://github.com/stevearc/oil.nvim" },
 	{ src = "https://github.com/nvim-treesitter/nvim-treesitter" },
 	{ src = "https://github.com/saghen/blink.cmp", version = vim.version.range("^1") },
@@ -181,11 +151,7 @@ vim.pack.add({
 	{ src = "https://github.com/windwp/nvim-ts-autotag" },
 })
 
-require("vague").setup({
-	transparent = true,
-	italic = false,
-})
-vim.cmd([[ colorscheme vague ]])
+vim.cmd([[ colorscheme eighties ]])
 
 local M = {
 	n = "N",
@@ -224,60 +190,7 @@ _G.statusline = function()
 	return s .. "%=%#StatusLine# %y " .. enc .. "[" .. vim.bo.fileformat .. "] %l:%c %#StatusLineMode# %p%% "
 end
 
-vim.o.statusline = "%!v:lua.statusline()"
-
-local c = {
-	bg = "#1c1c24",
-	fg = "#cdcdcd",
-
-	dark = "#252530",
-	accent = "#aeaed1",
-	soft = "#d7d7d7",
-	warn = "#f3be7c",
-
-	plus = "#7fa563",
-	error = "#d8647e",
-}
-
-vim.api.nvim_set_hl(0, "StatusLine", {
-	fg = c.fg,
-	bg = c.bg,
-})
-vim.api.nvim_set_hl(0, "StatusLineMode", {
-	fg = c.dark,
-	bg = c.accent,
-	bold = true,
-})
-vim.api.nvim_set_hl(0, "StatusLineGit", {
-	fg = c.soft,
-	bg = c.bg,
-})
-vim.api.nvim_set_hl(0, "StatusLineGitAdd", {
-	fg = c.plus,
-	bg = c.bg,
-})
-vim.api.nvim_set_hl(0, "StatusLineGitChange", {
-	fg = c.warn,
-	bg = c.bg,
-})
-vim.api.nvim_set_hl(0, "StatusLineGitRemove", {
-	fg = c.error,
-	bg = c.bg,
-})
-
-vim.api.nvim_set_hl(0, "TabLine", {
-	fg = c.fg,
-	bg = c.dark,
-})
-vim.api.nvim_set_hl(0, "TabLineSel", {
-	fg = c.dark,
-	bg = c.accent,
-	bold = true,
-})
-vim.api.nvim_set_hl(0, "TabLineFill", {
-	fg = c.fg,
-	bg = c.bg,
-})
+vim.opt.statusline = "%!v:lua.statusline()"
 
 require("oil").setup({
 	default_file_explorer = true,
@@ -305,6 +218,7 @@ vim.api.nvim_create_autocmd("InsertEnter", {
 			appearance = { nerd_font_variant = "mono" },
 			completion = {
 				menu = {
+					-- auto_show = false,
 					border = "rounded",
 					draw = {
 						columns = {
@@ -346,22 +260,15 @@ vim.api.nvim_create_autocmd("InsertEnter", {
 
 vim.diagnostic.config({
 	virtual_text = {
+		prefix = "~",
 		spacing = 4,
-	},
-	signs = {
-		text = {
-			[vim.diagnostic.severity.ERROR] = "",
-			[vim.diagnostic.severity.WARN] = "",
-			[vim.diagnostic.severity.HINT] = "💡",
-			[vim.diagnostic.severity.INFO] = "",
-		},
 	},
 	update_in_insert = false,
 	underline = true,
 	severity_sort = true,
 	float = {
+		wrap = true,
 		border = "rounded",
-		source = true,
 	},
 })
 
@@ -492,6 +399,7 @@ vim.keymap.set("n", "<leader>f", ":find ")
 
 vim.keymap.set("n", "<leader>V", "<cmd>e $MYVIMRC<cr>", { silent = true })
 vim.keymap.set("n", "<leader>Z", "<cmd>e $ZDOTDIR/.zshrc<cr>", { silent = true })
+vim.keymap.set("n", "<leader>T", "<cmd>e ~/.config/tmux/tmux.conf<cr>", { silent = true })
 
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
