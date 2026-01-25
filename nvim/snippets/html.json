@@ -1,20 +1,20 @@
 {
-    "HTML5 Boilerplate": {
-        "prefix": "html5",
-        "body": [
-            "<!DOCTYPE html>",
-            "<html lang=\"${1:en}\">",
-            "  <head>",
-            "    <meta charset=\"UTF-8\" />",
-            "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />",
-            "    <meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\" />",
-            "    <title>${2:Document}</title>",
-            "  </head>",
-            "  <body>",
-            "    $0",
-            "  </body>",
-            "</html>"
-        ],
-        "description": "HTML5 boilerplate template"
-    }
+  "HTML5 Boilerplate": {
+    "prefix": "html5",
+    "body": [
+      "<!DOCTYPE html>",
+      "<html lang=\"${1:en}\">",
+      "  <head>",
+      "    <meta charset=\"UTF-8\" />",
+      "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />",
+      "    <meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\" />",
+      "    <title>${2:Document}</title>",
+      "  </head>",
+      "  <body>",
+      "    $0",
+      "  </body>",
+      "</html>"
+    ],
+    "description": "HTML5 boilerplate template"
+  }
 }

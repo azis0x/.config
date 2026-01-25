@@ -139,6 +139,7 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 })
 
 vim.pack.add({
+	{ src = "https://github.com/Mofiqul/dracula.nvim" },
 	{ src = "https://github.com/stevearc/oil.nvim" },
 	{ src = "https://github.com/nvim-treesitter/nvim-treesitter" },
 	{ src = "https://github.com/saghen/blink.cmp", version = vim.version.range("^1") },
@@ -151,7 +152,11 @@ vim.pack.add({
 	{ src = "https://github.com/windwp/nvim-ts-autotag" },
 })
 
-vim.cmd([[ colorscheme eighties ]])
+require("dracula").setup({
+	transparent_bg = true,
+	italic_comment = false,
+})
+vim.cmd([[ colorscheme dracula ]])
 
 local M = {
 	n = "N",
@@ -305,13 +310,21 @@ require("nvim-treesitter").install({
 	"yaml",
 })
 
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "javascript", "javascriptreact", "typescript", "typescriptreact", "tsx", "jsx" },
+	callback = function()
+		vim.treesitter.start()
+	end,
+})
+
 require("conform").setup({
 	formatters_by_ft = {
+		html = { "" },
 		lua = { "stylua" },
 		javascript = { "prettierd", stop_after_first = true },
-		javascriptreact = { "prettierd" },
-		typescript = { "prettierd" },
-		typescriptreact = { "prettierd" },
+		javascriptreact = { "prettierd", stop_after_first = true },
+		typescript = { "prettierd", stop_after_first = true },
+		typescriptreact = { "prettierd", stop_after_first = true },
 	},
 	default_format_opts = {
 		lsp_format = "fallback",
