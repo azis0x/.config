@@ -68,6 +68,8 @@ vim.opt.encoding = "UTF-8"
 vim.opt.guicursor = ""
 
 for _, plugin in ipairs({
+	"netrw",
+	"netrwPlugin",
 	"gzip",
 	"tar",
 	"tarPlugin",
@@ -157,6 +159,8 @@ require("dracula").setup({
 	italic_comment = false,
 })
 vim.cmd([[ colorscheme dracula ]])
+vim.api.nvim_set_hl(0, "CursorLine", { bg = "NONE" })
+vim.api.nvim_set_hl(0, "CursorLineNr", { bg = "NONE" })
 
 local M = {
 	n = "N",
@@ -319,7 +323,6 @@ vim.api.nvim_create_autocmd("FileType", {
 
 require("conform").setup({
 	formatters_by_ft = {
-		html = { "" },
 		lua = { "stylua" },
 		javascript = { "prettierd", stop_after_first = true },
 		javascriptreact = { "prettierd", stop_after_first = true },

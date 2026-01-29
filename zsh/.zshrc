@@ -13,7 +13,7 @@ precmd() { vcs_info }
 zstyle ':vcs_info:git:*' formats ' %F{yellow}(%b)%f'
 
 setopt PROMPT_SUBST
-PS1='%B%F{green}%n@btw%f%b:%F{blue}%~%f${vcs_info_msg_0_} %F{white}$%f '
+PS1='%B%F{green}%n@btw%f%b:%F{blue}%c%f${vcs_info_msg_0_} %F{white}$%f '
 
 autoload -U compinit && compinit
 zstyle ':completion:*' menu select
@@ -26,6 +26,8 @@ bindkey '^E' end-of-line
 alias ls='ls --color=auto'
 alias la='ls -lA'
 alias l='ls -lh'
+alias ll='l -A'
+alias rmr='rm -rf'
 
 alias v='nvim'
 alias ..='cd ..'
